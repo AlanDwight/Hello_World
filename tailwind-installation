@@ -1,0 +1,22 @@
+First, try using the upgrade tool "npx @tailwindcss/upgrade" or "npx @tailwindcss/upgrade@next." This tool will basically automate everything, and it's also the fastest way to upgrade from Tailwind v3 to v4.
+There is also a bug report about this tool, so if something goes wrong, try running the upgrade tool in WSL (Windows Subsystem for Linux), which is a recommended workaround.
+
+Since there is no need for tailwind.config.js, there will be no init process (Deprecated).
+
+In v4, if you are using either PostCSS or CLI, you gotta install them separately in the following way, since not everyone needs them, so they've become separate packages in v4 ---
+
+For PostCSS ---->    "npm install tailwindcss @tailwindcss/postcss postcss"
+For CLI  ---->     "npm install tailwindcss @tailwindcss/cli"
+even for vite
+For Vite ----> "npm install tailwindcss @tailwindcss/vite"
+
+In v4, you have to import Tailwind itself using regular CSS @import, not @tailwind directives we usually use in v3.
+So, remove those lines
+"@tailwind base;
+@tailwind components;
+@tailwind utilities;"
+Add this   @import "tailwindcss"  in your main CSS file. For example, the "index.css" file.
+
+Tailwind v4 doesn't need a preprocessor like sass, since tailwind itself becomes a preprocessor. So you shouldn't use sass with v4.
+
+Note that Tailwind v4 is not working properly on some of the older web browsers, and some compatibility issues are flying around. To be fair, v4 is still relatively new and so does the documentation. So if you wanna rollback use this instead "npm install tailwindcss\@3" and follow the official v3 installation guidelines.
